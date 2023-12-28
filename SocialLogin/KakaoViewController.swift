@@ -22,7 +22,7 @@ final class KakaoViewController: UIViewController {
         // 카카오톡 실행 가능 여부 체크
         if UserApi.isKakaoTalkLoginAvailable() {
             UserApi.shared.loginWithKakaoTalk { oauthToken, error in
-
+                
                 if let error {
                     print("카카오로그인 실패 ", error.localizedDescription)
                 } else {
@@ -42,6 +42,38 @@ final class KakaoViewController: UIViewController {
         }
     }
     
+    @IBAction func kakaoLogoutButtonClicked(_ sender: UIButton) {
+        kakaoUnlink()
+//        kakaoLogout()
+    }
+    
+    // 회원탈퇴시??
+    private func kakaoUnlink() {
+        // 연결 끊기 요청 성공 시 로그아웃 처리가 함께 이뤄져 토큰이 삭제됩니다.
+        UserApi.shared.unlink { error in
+            if let error = error {
+                print(error)
+            }
+            else {
+                print("unlink() success.")
+            }
+        }
+        
+    }
+    
+    // 카카오 로그아웃
+    private func kakaoLogout() {
+        // 사용자 액세스 토큰과 리프레시 토큰을 모두 만료시켜, 더 이상 해당 사용자 정보로 카카오 API를 호출할 수 없도록 합니다.
+        UserApi.shared.logout { error in
+            if let error = error {
+                print(error)
+            }
+            else {
+                print("logout() success.")
+            }
+        }
+    }
+    
     private func kakaoRequestAgreement() {
         UserApi.shared.me() { (user, error) in
             if let error = error {
@@ -50,6 +82,7 @@ final class KakaoViewController: UIViewController {
             else {
                 if let user = user {
                     var scopes = [String]()
+                    // 필요한 권한
                     if (user.kakaoAccount?.profileNeedsAgreement == true) { scopes.append("profile") }
                     if (user.kakaoAccount?.emailNeedsAgreement == true) { scopes.append("account_email") }
                     if (user.kakaoAccount?.birthdayNeedsAgreement == true) { scopes.append("birthday") }
@@ -61,7 +94,7 @@ final class KakaoViewController: UIViewController {
                     
                     if scopes.count > 0 {
                         print("사용자에게 추가 동의를 받아야 합니다.")
-
+                        
                         // OpenID Connect 사용 시
                         // scope 목록에 "openid" 문자열을 추가하고 요청해야 함
                         // 해당 문자열을 포함하지 않은 경우, ID 토큰이 재발급되지 않음
@@ -71,13 +104,11 @@ final class KakaoViewController: UIViewController {
                         UserApi.shared.loginWithKakaoAccount(scopes: scopes) { (_, error) in
                             if let error = error {
                                 print(error)
-                            }
-                            else {
+                            } else {
                                 UserApi.shared.me() { (user, error) in
                                     if let error = error {
                                         print(error)
-                                    }
-                                    else {
+                                    } else {
                                         print("me() success.")
                                         guard let userInfo = user?.kakaoAccount else {
                                             print("유저정보 불러오기 실패 / user = nil")

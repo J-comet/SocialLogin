@@ -60,6 +60,15 @@
                                     <color key="baseBackgroundColor" systemColor="systemYellowColor"/>
                                 </buttonConfiguration>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ady-Nu-brA">
+                                <rect key="frame" x="57" y="177" width="279" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="로그아웃"/>
+                                <connections>
+                                    <action selector="kakaoLogoutButtonClicked:" destination="gcp-t7-9t9" eventType="touchUpInside" id="EeZ-IE-7ln"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RtF-9U-jvN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
