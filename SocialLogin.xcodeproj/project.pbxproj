@@ -9,19 +9,22 @@
 /* Begin PBXBuildFile section */
 		C04E5F262B3D031000A91E8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E5F252B3D031000A91E8D /* AppDelegate.swift */; };
 		C04E5F282B3D031000A91E8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E5F272B3D031000A91E8D /* SceneDelegate.swift */; };
-		C04E5F2A2B3D031000A91E8D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E5F292B3D031000A91E8D /* ViewController.swift */; };
+		C04E5F2A2B3D031000A91E8D /* AppleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E5F292B3D031000A91E8D /* AppleViewController.swift */; };
 		C04E5F2D2B3D031000A91E8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C04E5F2B2B3D031000A91E8D /* Main.storyboard */; };
 		C04E5F2F2B3D031100A91E8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C04E5F2E2B3D031100A91E8D /* Assets.xcassets */; };
 		C04E5F322B3D031100A91E8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C04E5F302B3D031100A91E8D /* LaunchScreen.storyboard */; };
 		C04E5F3B2B3D173900A91E8D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E5F3A2B3D173900A91E8D /* MainViewController.swift */; };
 		C04E5F3D2B3D3E0400A91E8D /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C04E5F3C2B3D3E0400A91E8D /* .gitignore */; };
+		C04E5F402B3D458C00A91E8D /* KakaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E5F3F2B3D458C00A91E8D /* KakaoViewController.swift */; };
+		C04E5F462B3D465B00A91E8D /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = C04E5F452B3D465B00A91E8D /* KakaoSDK */; };
+		C04E5F482B3D48CE00A91E8D /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E5F472B3D48CE00A91E8D /* APIKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C04E5F222B3D031000A91E8D /* SocialLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C04E5F252B3D031000A91E8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C04E5F272B3D031000A91E8D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C04E5F292B3D031000A91E8D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C04E5F292B3D031000A91E8D /* AppleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleViewController.swift; sourceTree = "<group>"; };
 		C04E5F2C2B3D031000A91E8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C04E5F2E2B3D031100A91E8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C04E5F312B3D031100A91E8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -29,6 +32,8 @@
 		C04E5F392B3D0BF300A91E8D /* SocialLogin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SocialLogin.entitlements; sourceTree = "<group>"; };
 		C04E5F3A2B3D173900A91E8D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C04E5F3C2B3D3E0400A91E8D /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		C04E5F3F2B3D458C00A91E8D /* KakaoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoViewController.swift; sourceTree = "<group>"; };
+		C04E5F472B3D48CE00A91E8D /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C04E5F462B3D465B00A91E8D /* KakaoSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,13 +70,15 @@
 				C04E5F392B3D0BF300A91E8D /* SocialLogin.entitlements */,
 				C04E5F252B3D031000A91E8D /* AppDelegate.swift */,
 				C04E5F272B3D031000A91E8D /* SceneDelegate.swift */,
-				C04E5F292B3D031000A91E8D /* ViewController.swift */,
+				C04E5F292B3D031000A91E8D /* AppleViewController.swift */,
 				C04E5F2B2B3D031000A91E8D /* Main.storyboard */,
 				C04E5F2E2B3D031100A91E8D /* Assets.xcassets */,
 				C04E5F302B3D031100A91E8D /* LaunchScreen.storyboard */,
 				C04E5F332B3D031100A91E8D /* Info.plist */,
 				C04E5F3A2B3D173900A91E8D /* MainViewController.swift */,
 				C04E5F3C2B3D3E0400A91E8D /* .gitignore */,
+				C04E5F3F2B3D458C00A91E8D /* KakaoViewController.swift */,
+				C04E5F472B3D48CE00A91E8D /* APIKey.swift */,
 			);
 			path = SocialLogin;
 			sourceTree = "<group>";
@@ -91,6 +99,9 @@
 			dependencies = (
 			);
 			name = SocialLogin;
+			packageProductDependencies = (
+				C04E5F452B3D465B00A91E8D /* KakaoSDK */,
+			);
 			productName = SocialLogin;
 			productReference = C04E5F222B3D031000A91E8D /* SocialLogin.app */;
 			productType = "com.apple.product-type.application";
@@ -119,6 +130,9 @@
 				Base,
 			);
 			mainGroup = C04E5F192B3D031000A91E8D;
+			packageReferences = (
+				C04E5F442B3D465B00A91E8D /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+			);
 			productRefGroup = C04E5F232B3D031000A91E8D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -147,9 +161,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C04E5F2A2B3D031000A91E8D /* ViewController.swift in Sources */,
+				C04E5F2A2B3D031000A91E8D /* AppleViewController.swift in Sources */,
 				C04E5F262B3D031000A91E8D /* AppDelegate.swift in Sources */,
 				C04E5F282B3D031000A91E8D /* SceneDelegate.swift in Sources */,
+				C04E5F402B3D458C00A91E8D /* KakaoViewController.swift in Sources */,
+				C04E5F482B3D48CE00A91E8D /* APIKey.swift in Sources */,
 				C04E5F3B2B3D173900A91E8D /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,6 +391,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C04E5F442B3D465B00A91E8D /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C04E5F452B3D465B00A91E8D /* KakaoSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C04E5F442B3D465B00A91E8D /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDK;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C04E5F1A2B3D031000A91E8D /* Project object */;
 }

@@ -27,7 +27,7 @@ import AuthenticationServices
  // Revoke tokens - 사용자가 직접 애플로그인을 제거했을 때 회사서버에서도 제거 필요
  https://developer.apple.com/documentation/sign_in_with_apple/revoke_tokens
  */
-class ViewController: UIViewController {
+class AppleViewController: UIViewController {
 
     // iOS 13 이상
     @IBOutlet var appleLoginButton: ASAuthorizationAppleIDButton!
@@ -50,7 +50,7 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController: ASAuthorizationControllerDelegate {
+extension AppleViewController: ASAuthorizationControllerDelegate {
     
     // 애플로그인 성공한 경우 -> 메인페이지로 이동 등..
     // 최초 시도: 계속 버튼 UI , Email, fullName 제공
@@ -110,7 +110,7 @@ extension ViewController: ASAuthorizationControllerDelegate {
     }
 }
 
-extension ViewController: ASAuthorizationControllerPresentationContextProviding {
+extension AppleViewController: ASAuthorizationControllerPresentationContextProviding {
     
     // 레이아웃 꽉차게
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
