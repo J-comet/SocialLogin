@@ -13,6 +13,7 @@
 		C04E5F2D2B3D031000A91E8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C04E5F2B2B3D031000A91E8D /* Main.storyboard */; };
 		C04E5F2F2B3D031100A91E8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C04E5F2E2B3D031100A91E8D /* Assets.xcassets */; };
 		C04E5F322B3D031100A91E8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C04E5F302B3D031100A91E8D /* LaunchScreen.storyboard */; };
+		C04E5F3B2B3D173900A91E8D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E5F3A2B3D173900A91E8D /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,8 @@
 		C04E5F2E2B3D031100A91E8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C04E5F312B3D031100A91E8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C04E5F332B3D031100A91E8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C04E5F392B3D0BF300A91E8D /* SocialLogin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SocialLogin.entitlements; sourceTree = "<group>"; };
+		C04E5F3A2B3D173900A91E8D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +59,7 @@
 		C04E5F242B3D031000A91E8D /* SocialLogin */ = {
 			isa = PBXGroup;
 			children = (
+				C04E5F392B3D0BF300A91E8D /* SocialLogin.entitlements */,
 				C04E5F252B3D031000A91E8D /* AppDelegate.swift */,
 				C04E5F272B3D031000A91E8D /* SceneDelegate.swift */,
 				C04E5F292B3D031000A91E8D /* ViewController.swift */,
@@ -63,6 +67,7 @@
 				C04E5F2E2B3D031100A91E8D /* Assets.xcassets */,
 				C04E5F302B3D031100A91E8D /* LaunchScreen.storyboard */,
 				C04E5F332B3D031100A91E8D /* Info.plist */,
+				C04E5F3A2B3D173900A91E8D /* MainViewController.swift */,
 			);
 			path = SocialLogin;
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 				C04E5F2A2B3D031000A91E8D /* ViewController.swift in Sources */,
 				C04E5F262B3D031000A91E8D /* AppDelegate.swift in Sources */,
 				C04E5F282B3D031000A91E8D /* SceneDelegate.swift in Sources */,
+				C04E5F3B2B3D173900A91E8D /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +296,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SocialLogin/SocialLogin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SV3K237PCX;
@@ -318,6 +325,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SocialLogin/SocialLogin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SV3K237PCX;
