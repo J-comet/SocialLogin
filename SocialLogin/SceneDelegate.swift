@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AuthenticationServices
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -13,10 +14,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        guard let user = UserDefaults.standard.string(forKey: "User") else {
+            print("로그인 X")
+            return
+        }
+        
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        appleIDProvider.getCredentialState(forUserID: user) { credentialState, error in
+            switch credentialState {
+            case .revoked, .notFound:
+                print("유저가 직접 애플로그인 제거한 경우 로그인화면으로 이동")
+            case .authorized:
+                DispatchQueue.main.async {
+                    let window = UIWindow(windowScene: windowScene)
+                    window.rootViewController = MainViewController()
+                    self.window = window
+                    window.makeKeyAndVisible()
+                }
+            default: break
+            }
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
