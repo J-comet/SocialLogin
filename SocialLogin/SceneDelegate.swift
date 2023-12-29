@@ -8,6 +8,7 @@
 import UIKit
 import AuthenticationServices
 import KakaoSDKAuth
+import KakaoSDKUser
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
@@ -16,7 +17,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        checkAppleLogin(windowScene: windowScene)
         
+    }
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        if let url = URLContexts.first?.url {
+            if (AuthApi.isKakaoTalkLoginUrl(url)) {
+                _ = AuthController.handleOpenUrl(url: url)
+            }
+        }
+    }
+    
+    func checkAppleLogin(windowScene: UIWindowScene) {
         guard let user = UserDefaults.standard.string(forKey: "User") else {
             print("로그인 X")
             return
@@ -29,6 +42,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 print("유저가 직접 애플로그인 제거한 경우 로그인화면으로 이동")
             case .authorized:
                 DispatchQueue.main.async {
+                    print("애플 로그인 활성화")
                     let window = UIWindow(windowScene: windowScene)
                     window.rootViewController = MainViewController()
                     self.window = window
@@ -39,12 +53,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
     
-    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        if let url = URLContexts.first?.url {
-            if (AuthApi.isKakaoTalkLoginUrl(url)) {
-                _ = AuthController.handleOpenUrl(url: url)
-            }
-        }
+    func checkKakaoLogin() {
+//        if (AuthApi.hasToken()) {
+//            UserApi.shared.accessTokenInfo { (_, error) in
+//                if let error = error {
+//                    if let sdkError = error as? SdkError, sdkError.isInvalidTokenError() == true {
+//                        //로그인 필요
+//                        print("카카오 로그인 필요")
+//                    } else {
+//                        //기타 에러
+//                        print("카카오 로그인 기타 에러")
+//                    }
+//                }
+//                else {
+//                    //토큰 유효성 체크 성공(필요 시 토큰 갱신됨)
+//                }
+//            }
+//        }
+//        else {
+//            //로그인 필요
+//        }
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

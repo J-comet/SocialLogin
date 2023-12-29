@@ -14,4 +14,7 @@ class MainViewController: UIViewController {
         view.backgroundColor = .red
     }
 
+    @IBAction func faceIDButtonClicked(_ sender: UIButton) {
+        AuthenticaionManager.shared.auth()
+    }
 }
