@@ -19,6 +19,7 @@
 		C04E5F462B3D465B00A91E8D /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = C04E5F452B3D465B00A91E8D /* KakaoSDK */; };
 		C04E5F482B3D48CE00A91E8D /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E5F472B3D48CE00A91E8D /* APIKey.swift */; };
 		C0D391022B3E636600BFD02E /* AuthenticaionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D391012B3E636600BFD02E /* AuthenticaionManager.swift */; };
+		C0D391052B3E9DE400BFD02E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C0D391042B3E9DE400BFD02E /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C04E5F462B3D465B00A91E8D /* KakaoSDK in Frameworks */,
+				C0D391052B3E9DE400BFD02E /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +106,7 @@
 			name = SocialLogin;
 			packageProductDependencies = (
 				C04E5F452B3D465B00A91E8D /* KakaoSDK */,
+				C0D391042B3E9DE400BFD02E /* SnapKit */,
 			);
 			productName = SocialLogin;
 			productReference = C04E5F222B3D031000A91E8D /* SocialLogin.app */;
@@ -135,6 +138,7 @@
 			mainGroup = C04E5F192B3D031000A91E8D;
 			packageReferences = (
 				C04E5F442B3D465B00A91E8D /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				C0D391032B3E9DE400BFD02E /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = C04E5F232B3D031000A91E8D /* Products */;
 			projectDirPath = "";
@@ -405,6 +409,14 @@
 				kind = branch;
 			};
 		};
+		C0D391032B3E9DE400BFD02E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -412,6 +424,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C04E5F442B3D465B00A91E8D /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
 			productName = KakaoSDK;
+		};
+		C0D391042B3E9DE400BFD02E /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0D391032B3E9DE400BFD02E /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

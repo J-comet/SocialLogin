@@ -87,6 +87,7 @@ extension AppleViewController: ASAuthorizationControllerDelegate {
             // 이메일, 토큰, 이름 -> UserDefaults & API 서버에 데이터 전달
             // 서버에 Request 후 Response 를 받을 때 다음 화면으로 전환
             UserDefaults.standard.set(userIdentifier, forKey: "User")
+            UserDefaults.standard.set(tokenToString, forKey: "Token")
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.present(MainViewController(), animated: true)

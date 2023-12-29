@@ -9,6 +9,7 @@ import UIKit
 import AuthenticationServices
 import KakaoSDKAuth
 import KakaoSDKUser
+import KakaoSDKCommon
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
@@ -17,8 +18,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        checkAppleLogin(windowScene: windowScene)
         
+        /**
+         SceneDelegate 에서 처리하지 않고
+         SplashVC 를 생성 후 애플 or 카카도 등 소셜 로그인 체크 하도록 수정 필요
+         */
+//        checkAppleLogin(windowScene: windowScene)
+        checkKakaoLogin(windowScene: windowScene)
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -29,7 +35,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
     
-    func checkAppleLogin(windowScene: UIWindowScene) {
+    private func checkAppleLogin(windowScene: UIWindowScene) {
         guard let user = UserDefaults.standard.string(forKey: "User") else {
             print("로그인 X")
             return
@@ -53,25 +59,49 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
     
-    func checkKakaoLogin() {
-//        if (AuthApi.hasToken()) {
-//            UserApi.shared.accessTokenInfo { (_, error) in
-//                if let error = error {
-//                    if let sdkError = error as? SdkError, sdkError.isInvalidTokenError() == true {
-//                        //로그인 필요
-//                        print("카카오 로그인 필요")
-//                    } else {
-//                        //기타 에러
-//                        print("카카오 로그인 기타 에러")
-//                    }
-//                }
-//                else {
-//                    //토큰 유효성 체크 성공(필요 시 토큰 갱신됨)
-//                }
-//            }
-//        }
-//        else {
-//            //로그인 필요
+    private func checkKakaoLogin(windowScene: UIWindowScene) {
+        if AuthApi.hasToken() {
+            UserApi.shared.accessTokenInfo { accessTokenInfo, error in
+                if let error {
+                    if let sdkError = error as? SdkError, sdkError.isInvalidTokenError() == true {
+                        //로그인 필요
+                        self.moveLoginVC(windowScene: windowScene)
+                    } else {
+                        //기타 에러
+                        print("카카오 로그인 기타 에러")
+                        self.moveLoginVC(windowScene: windowScene)
+                    }
+                } else {
+                    //토큰 유효성 체크 성공(필요 시 토큰 갱신됨)
+                    if let id = accessTokenInfo?.id {
+                        UserDefaults.standard.set(id, forKey: "User")
+                        DispatchQueue.main.async {
+                            print("카카오 로그인 활성화")
+                            let window = UIWindow(windowScene: windowScene)
+                            window.rootViewController = MainViewController()
+                            self.window = window
+                            window.makeKeyAndVisible()
+                        }
+                    } else {
+                        print("카카오 로그인 필요 33")
+                        self.moveLoginVC(windowScene: windowScene)
+                    }
+                    
+                }
+            }
+        } else {
+            //로그인 필요
+            print("카카오 로그인 필요 22")
+            moveLoginVC(windowScene: windowScene)
+        }
+    }
+    
+    private func moveLoginVC(windowScene: UIWindowScene) {
+//        DispatchQueue.main.async {
+            let window = UIWindow(windowScene: windowScene)
+            window.rootViewController = KakaoViewController()
+            self.window = window
+            window.makeKeyAndVisible()
 //        }
     }
     

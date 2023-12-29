@@ -7,15 +7,44 @@
 
 import UIKit
 import KakaoSDKUser
+import SnapKit
 
 final class KakaoViewController: UIViewController {
     
-    @IBOutlet var kakaoLoginButton: UIButton!
+    private let kakaoLoginButton = {
+        let button = UIButton()
+        button.setTitle("카카오 로그인", for: .normal)
+        button.backgroundColor = .systemYellow
+        return button
+    }()
+    
+    private let kakaoLogoutButton = {
+        let button = UIButton()
+        button.setTitle("로그아웃", for: .normal)
+        button.backgroundColor = .link
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.addSubview(kakaoLoginButton)
+        view.addSubview(kakaoLogoutButton)
+        
+        kakaoLoginButton.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.horizontalEdges.equalToSuperview().inset(16)
+            make.height.equalTo(60)
+        }
+        
+        kakaoLogoutButton.snp.makeConstraints { make in
+            make.top.equalTo(kakaoLoginButton.snp.bottom).offset(24)
+            make.horizontalEdges.equalToSuperview().inset(16)
+            make.height.equalTo(60)
+        }
+        
         kakaoLoginButton.addTarget(self, action: #selector(kakaoLoginButtonClicked), for: .touchUpInside)
+        kakaoLogoutButton.addTarget(self, action: #selector(kakaoLogoutButtonClicked), for: .touchUpInside)
     }
     
     @objc func kakaoLoginButtonClicked() {
@@ -42,7 +71,7 @@ final class KakaoViewController: UIViewController {
         }
     }
     
-    @IBAction func kakaoLogoutButtonClicked(_ sender: UIButton) {
+    @objc func kakaoLogoutButtonClicked() {
         kakaoUnlink()
 //        kakaoLogout()
     }
