@@ -8,6 +8,17 @@
 import UIKit
 import SnapKit
 
+/**
+ 1. Build Configureation : Debug Release / ex) 유료버전
+ */
+
+/**
+ 앱스토어에서 리젝당했을 때 크래시파일을 전달 받은 경우 해당 파일을 분석하는 방법
+ AppStore Reject App CrashLog .txt File
+ .txt -> .crash
+ Device and Simulator > View Console Log > Open Xcode Project
+ */
+
 class MainViewController: UIViewController {
     
     private let authButton = {

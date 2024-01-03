@@ -35,6 +35,23 @@ class AppleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         appleLoginButton.addTarget(self, action: #selector(appleLoginButtonClicked), for: .touchUpInside)
+        
+        /**
+         Build Configuration 변화에 따른 값 변경
+         */
+        
+        guard let configuration = Bundle.main.object(forInfoDictionaryKey: "CFBundleIdentifier") as? String else {
+            print("configuration info error")
+            return
+        }
+        
+        // 프리미엄으로 build 했을 때
+        if configuration == "com.comet.SocialLoginPremium" {
+            view.backgroundColor = .yellow
+        } else {
+            view.backgroundColor = .red
+        }
+            
     }
 
     @objc func appleLoginButtonClicked() {
