@@ -9,7 +9,19 @@ import UIKit
 import SnapKit
 
 /**
- 1. Build Configureation : Debug Release / ex) 유료버전
+ Xcode 15 변화된 점
+  - 자동완성
+  - 성능
+  - 아카이브 (출시)
+  - Github 방법
+  - Asset Catalog 기능 추가
+    ex) imageView.image = UIImage(name: "apple") -> imageView.image = .apple
+  - String Catalog 추가 이전에 사용하던 로컬라이징 방식은 레거시로 변경
+    기존에 레거시를 간편하게 마이그레이션 가능 Edit -> Convert -> To String Catalog
+ */
+
+/**
+  Build Configureation : Debug Release / ex) 유료버전
  */
 
 /**
